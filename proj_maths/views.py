@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.core.cache import cache
 from . import terms_work
+from . import terms_db
 
 
 def index(request):
@@ -8,7 +9,7 @@ def index(request):
 
 
 def terms_list(request):
-    terms = terms_work.get_terms_for_table()
+    terms = terms_db.db_get_terms_for_table()
     return render(request, "term_list.html", context={"terms": terms})
 
 
@@ -17,8 +18,8 @@ def add_term(request):
 
 
 def send_term(request):
+    cache.clear()
     if request.method == "POST":
-        cache.clear()
         user_name = request.POST.get("name")
         new_term = request.POST.get("new_term", "")
         new_definition = request.POST.get("new_definition", "").replace(";", ",")
@@ -32,7 +33,7 @@ def send_term(request):
         else:
             context["success"] = True
             context["comment"] = "Ваш термин принят"
-            terms_work.write_term(new_term, new_definition)
+            terms_db.db_write_term(new_term, new_definition)
         if context["success"]:
             context["success-title"] = ""
         return render(request, "term_request.html", context)
@@ -41,5 +42,16 @@ def send_term(request):
 
 
 def show_stats(request):
-    stats = terms_work.get_terms_stats()
+    stats = terms_db.db_get_term_stats()
     return render(request, "stats.html", stats)
+
+
+def show_translator(request):
+    requested = request.POST.get("txt")
+    lang = request.POST.get("lang")
+    translation = ''
+    if lang == 'en':
+        translation = terms_db.db_find_translation_engtorus(requested)
+    if lang == 'rus':
+        translation = terms_db.db_find_translation_rustoeng(requested)
+    return render(request, "Translator_window.html", {"result": translation})

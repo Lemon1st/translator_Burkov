@@ -1,0 +1,27 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+Переводчик
+{% endblock %}
+
+
+{% block content %}
+<div class="container px-4 py-5" id="show-translator">
+    <h1 class="mt-5 mb-5">Окно переводчика</h1>
+    <form method="POST">
+        <div class="form-row mt-4">
+            <div class="col">
+                <textarea type="text" name="txt" class="form-control" placeholder="Впишите текст" rows="5" required="required"></textarea>
+            </div>
+            <div class="col">
+                <select id="inputState" class="form-control" name="lang">
+                    <option selected value="rus">Русский -> Английский</option>
+                    <option selected value="en">Английский -> Русский</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Перевести</button>
+    </form>
+    <p class="mt-4">{{result}}</p>
+</div>
+{% endblock %}

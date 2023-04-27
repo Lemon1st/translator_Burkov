@@ -1,11 +1,11 @@
 {% extends "base_page.html" %}
 
 {% block page-title %}
-Список терминов
+Список известных слов
 {% endblock %}
 
 {% block page-lead %}
-Все термины извлекаются из БД/файла и динамически вставляются в таблицу.
+Здесь ты можешь посмотреть уже известные тебе слова и их перевод.
 {% endblock %}
 
 {% block content %}
@@ -15,8 +15,8 @@
           <thead>
             <tr>
               <th scope="col" class="py-3">#</th>
-              <th scope="col" class="py-3">Термин</th>
-              <th scope="col" class="py-3">Описание</th>
+              <th scope="col" class="py-3">Слово на русском языке</th>
+              <th scope="col" class="py-3">Перевод на английский язык</th>
             </tr>
           </thead>
           <tbody>

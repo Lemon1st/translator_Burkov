@@ -7,21 +7,45 @@
 
 {% block content %}
 <div class="container px-4 py-5" id="show-translator">
+    <form method="POST" id = 'translating'>
     <h1 class="mt-5 mb-5">Окно переводчика</h1>
-    <form method="POST">
+        <div class="col">
+            <select id="inputState" class="form-control" name="lang">
+                <option selected value="rus" style = "text-align: center">Русский -> Английский</option>
+                <option selected value="en" style = "text-align: center">Английский -> Русский</option>
+            </select>
+        </div>
         <div class="form-row mt-4">
             <div class="col">
-                <textarea type="text" name="txt" class="form-control" placeholder="Впишите текст" rows="5" required="required"></textarea>
-            </div>
-            <div class="col">
-                <select id="inputState" class="form-control" name="lang">
-                    <option selected value="rus">Русский -> Английский</option>
-                    <option selected value="en">Английский -> Русский</option>
-                </select>
+                <table>
+                    <tr>
+                        <td colspan="2">
+                            <td width="50%">
+                                <textarea type="text" id="txt" name="txt" class="form-control" placeholder="Впишите текст" rows="5" required="required">{{start}}</textarea>
+                            </td>
+                    <td width="50%">
+                        <textarea readonly type="text" id="txt_trans" name="txt_trans" class="form-control" placeholder="Ваш перевод" rows="5">{{result}}</textarea>
+                    </td>
+                    </tr>
+                </table>
             </div>
         </div>
         <button type="submit" class="btn btn-primary mt-2">Перевести</button>
+        <p class="mt-4" id = "txt_result">{{result}}</p>
     </form>
-    <p class="mt-4">{{result}}</p>
 </div>
+<script type="text/javascript">
+$(document).on('submit','#translating1',function(e){
+    e.preventDefault();
+    $.ajax({
+        type:'POST',
+        url:'/translator_window',
+        data:{
+        txt : $(#txt).val()
+        txt_trans : $(#txt_result).val()
+        },
+        })
+    e.preventDefault();
+    });
+</script>
 {% endblock %}

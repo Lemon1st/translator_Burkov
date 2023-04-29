@@ -47,11 +47,24 @@ def show_stats(request):
 
 
 def show_translator(request):
-    requested = request.POST.get("txt")
-    lang = request.POST.get("lang")
-    translation = ''
-    if lang == 'en':
-        translation = terms_db.db_find_translation_engtorus(requested)
-    if lang == 'rus':
-        translation = terms_db.db_find_translation_rustoeng(requested)
-    return render(request, "Translator_window.html", {"result": translation})
+    cache.clear()
+    if request.method == "POST":
+        requested = request.POST.get("txt")
+        lang = request.POST.get("lang")
+        translation = ''
+        context = {"user": "пользователь"}
+        if lang == 'en':
+            translation = terms_db.db_find_translation_engtorus(requested)
+            if translation is None:
+                context["success"] = False
+                context["comment"] = "Слова нет в словаре!"
+                return render(request, "term_request.html", context)
+        if lang == 'rus':
+            translation = terms_db.db_find_translation_rustoeng(requested)
+            if translation is None:
+                context["success"] = False
+                context["comment"] = "Слова нет в словаре!"
+                return render(request, "term_request.html", context)
+        return render(request, "Translator_window.html", {"result": translation, "start": requested})
+    else:
+        return render(request, "Translator_window.html")

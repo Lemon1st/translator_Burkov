@@ -26,13 +26,13 @@ def send_term(request):
         context = {"user": user_name}
         if len(new_definition) == 0:
             context["success"] = False
-            context["comment"] = "Описание должно быть не пустым"
+            context["comment"] = "Перевод должно быть не пустым"
         elif len(new_term) == 0:
             context["success"] = False
-            context["comment"] = "Термин должен быть не пустым"
+            context["comment"] = "Введенное слово должно быть не пустым"
         else:
             context["success"] = True
-            context["comment"] = "Ваш термин принят"
+            context["comment"] = "Ваш перевод принят"
             terms_db.db_write_term(new_term, new_definition, user_name)
         if context["success"]:
             context["success-title"] = ""

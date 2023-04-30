@@ -1,5 +1,9 @@
 {% extends "base_page.html" %}
 
+{% block pagetitle %}
+Переводчик
+{% endblock %}
+
 {% block page-title %}
 Переводчик
 {% endblock %}
@@ -11,8 +15,13 @@
     <h1 class="mt-5 mb-5">Окно переводчика</h1>
         <div class="col">
             <select id="inputState" class="form-control" name="lang">
+                {% if language_start == 'rus' %}
                 <option selected value="rus" style = "text-align: center">Русский -> Английский</option>
-                <option selected value="en" style = "text-align: center">Английский -> Русский</option>
+                <option value="en" style = "text-align: center">Английский -> Русский</option>
+                {% else %}
+                <option value="rus" style = "text-align: center">Русский -> Английский</option>
+                <option selected value="en" style = "text-align: center" selected>Английский -> Русский</option>
+                {% endif %}
             </select>
         </div>
         <div class="form-row mt-4">
@@ -31,7 +40,6 @@
             </div>
         </div>
         <button type="submit" class="btn btn-primary mt-2">Перевести</button>
-        <p class="mt-4" id = "txt_result">{{result}}</p>
     </form>
 </div>
 <script type="text/javascript">

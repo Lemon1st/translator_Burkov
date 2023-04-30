@@ -33,7 +33,7 @@ def send_term(request):
         else:
             context["success"] = True
             context["comment"] = "Ваш термин принят"
-            terms_db.db_write_term(new_term, new_definition)
+            terms_db.db_write_term(new_term, new_definition, user_name)
         if context["success"]:
             context["success-title"] = ""
         return render(request, "term_request.html", context)
@@ -65,6 +65,6 @@ def show_translator(request):
                 context["success"] = False
                 context["comment"] = "Слова нет в словаре!"
                 return render(request, "term_request.html", context)
-        return render(request, "Translator_window.html", {"result": translation, "start": requested})
+        return render(request, "Translator_window.html", {"result": translation, "start": requested, "language_start": lang})
     else:
         return render(request, "Translator_window.html")

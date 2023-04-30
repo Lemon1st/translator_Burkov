@@ -6,11 +6,15 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+from datetime import datetime
+
 
 
 class Termauthors(models.Model):
     termid = models.IntegerField(db_column='termId')  # Field name made lowercase.
     termsource = models.TextField(db_column='termSource')  # Field name made lowercase.
+    termauthor = models.TextField(db_column='termAuthor')  # Field name made lowercase.
+    termdate = models.DateTimeField(db_column='termDate', default=datetime.now, blank=True)  # Field name made lowercase.
 
     class Meta:
         #managed = False

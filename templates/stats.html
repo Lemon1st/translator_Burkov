@@ -1,5 +1,9 @@
 {% extends "base_page.html" %}
 
+{% block pagetitle %}
+Статистика
+{% endblock %}
+
 {% block page-title %}
 Статистика изучения языка
 {% endblock %}
@@ -32,16 +36,29 @@
     </div>
     <div class="row text-center">
         <div class="col-md-4">
-            <h4>{{ words_avg }}</h4>
-            <p class="text-muted">слов в среднем</p>
+            <h4>{{ terms_last_7_days }}</h4>
+            <p class="text-muted">слов добавлено за последнюю неделю</p>
         </div>
         <div class="col-sm-4">
-            <h4>{{ words_max }}</h4>
-            <p class="text-muted">максимум</p>
+            <h4>{{ terms_last_1_days }}</h4>
+            <p class="text-muted">слов добавлено за последний день</p>
         </div>
         <div class="col-sm-4">
-            <h4>{{ words_min }}</h4>
-            <p class="text-muted">минимум</p>
+            <h4>{{ terms_last_1_hour }}</h4>
+            <p class="text-muted">слов добавлено за последний час</p>
+        </div>
+    </div>
+    <div>
+        <h3 class="py-2">Самый активный пользователь</h3>
+    </div>
+    <div class="row text-center">
+        <div class="col-sm-4">
+            <h4>{{ most_popular_author }}</h4>
+            <p class="text-muted">Самый активный пользователь</p>
+        </div>
+        <div class="col-sm-4">
+            <h4>{{ most_popular_amount }}</h4>
+            <p class="text-muted">слов добавлено им</p>
         </div>
     </div>
 </div>

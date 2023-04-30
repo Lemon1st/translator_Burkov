@@ -1,5 +1,9 @@
 {% extends "base_page.html" %}
 
+{% block pagetitle %}
+Добавить слово
+{% endblock %}
+
 {% block page-title %}
 Добавить слово в словарь переводчика
 {% endblock %}
@@ -16,24 +20,20 @@
             <h3>Ваши контактные данные</h3>
         </div>
         <div class="row px-5 py-2">
-            <div class="col-md-6">
+            <div class="col-md-6 offset-3">
                 <label for="name">Ваше имя:</label>
                 <input type="text" class="form-control input-lg" name="name" id="name" placeholder="Иван" value required>
-            </div>
-            <div class="col-md-6">
-                <label for="email">Ваш контактный email:</label>
-                <input type="text" class="form-control input-lg" name="email" id="email" placeholder="ivan@ivanov.com" value required>
             </div>
         </div>
         <div class="row px-5 py-2">
             <h3>Ваш термин</h3>
         </div>
         <div class="row px-5 py-2">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <label for="new_term">Слово на русском языке</label>
-                <input type="text" class="form-control input-lg" name="new_term" id="new_term">
+                <textarea type="text" class="form-control input-lg" name="new_term" id="new_term" aria-describedby="definition_note" rows="3"></textarea>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <label for="new_definition">Перевод слова на английском</label>
                 <textarea type="text" class="form-control input-lg" name="new_definition" id="new_definition" aria-describedby="definition_note" rows="3"></textarea>
                 <div id="definition_note" class="form-text"Слово или словосочетание</div>

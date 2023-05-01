@@ -10,13 +10,14 @@
 
 {% block page-lead %}
 Начни изучать английский сейчас! <br/>
-Ты можешь добавлять новые для себя слова в словарь, искать слова, а так же воспользоваться окном с переводчиком!
+Ты можешь добавлять новые для себя слова в словарь, следить за своим прогрессом,<br/>
+а так же воспользоваться окном с переводчиком!
 {% endblock %}
 
 {% block content %}
 <div class="container px-4 py-5" id="project-contents">
     <h2 class="pb-2 border-bottom">Возможности</h2>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
         <div class="col d-flex">
             <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
                 <svg class="bi" width="1em" height="1em">
@@ -25,7 +26,7 @@
             </div>
             <div>
                 <h3 class="fs-2">Словарь</h3>
-                <p>Здесь ты можешь посмотреть уже известные тебе слова и их перевод.</p>
+                <p>Здесь ты можешь посмотреть уже известные тебе слова и их перевод</p>
                 <a href="/terms-list" class="btn btn-primary">Посмотреть</a>
             </div>
         </div>
@@ -36,7 +37,7 @@
                 </svg>
             </div>
             <div>
-                <h3 class="fs-2">Форма для заполнения новых слов</h3>
+                <h3 class="fs-2">Добавление новых слов</h3>
                 <p>Здесь ты можешь добавить новые слова и их перевод в словарь</p>
                 <a href="/add-term" class="btn btn-primary">
                     Добавить
@@ -65,7 +66,7 @@
             </div>
             <div>
                 <h3 class="fs-2">Статистика</h3>
-                <p>Здесь ты можешь отследить свой прогресс изучения языка.</p>
+                <p>Здесь ты можешь отследить свой прогресс изучения языка</p>
                 <a href="/stats" class="btn btn-primary">
                     Изучить
                 </a>
